@@ -23,9 +23,6 @@ document.querySelectorAll('#list > li > span')
 document.querySelector
 */
 
-const [mainSection] = document.getElementsByClassName('main-section');
-console.log(mainSection);
-
 /*const buttons = [...document.getElementsByClassName('main-button')];
 
 buttons.forEach((elem) =>{
@@ -33,12 +30,17 @@ buttons.forEach((elem) =>{
 })
 */
 
-const buttons = document.getElementsByClassName('main-button');
+const mainSection = document.querySelector('.main-section');
+console.log(mainSection);
+
+const buttons = document.querySelectorAll('.main-button');
 
 for(elem of buttons){
   elem.addEventListener('click', alertOnClick);
 }
 
-const par = document.getElementById('unique');
-
+const par = document.querySelector('#unique');
 console.log(par);
+
+const heading = document.querySelector('.main-section > h1');
+console.log(heading);
