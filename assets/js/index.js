@@ -14,12 +14,12 @@ const [prevButton, nextButton] = document.querySelectorAll('.slider-container > 
 
 updateView(slider.currentSlide);
 
-function createButtonHandler(action = 'next') {
-  return () => {
+const createButtonHandler = (action = 'next') =>
+  () => {
     const newImage = slider[action]();
     updateView(newImage);
-  }
-}
+  };
+
 
 
 prevButton.addEventListener("click", createButtonHandler('prev'));
