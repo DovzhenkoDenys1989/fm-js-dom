@@ -1,20 +1,29 @@
-const btn = document.querySelector('#unique');
+'use strict';
 
-/*function createBtnHandler(clicksAmount = 5) {
-  const btnHandler = () => {
+const btn = document.querySelector('#unique');
+const btn2 = document.querySelector('#unique2');
+
+function createBtnHandler(clicksAmount = 5) {
+  const btnHandler = ({ target: targetBtn }) => {
+
+    if(clicksAmount <= 0){
+      targetBtn.removeEventListener('click', btnHandler);
+      return;
+    }
+
     alert('success');
     clicksAmount--;
-    if(clicksAmount === 0){
-      btn.removeEventListener('click', btnHandler);
-    }
   };
   return btnHandler;
-}*/
+}
+
+const btnHandler = createBtnHandler(3);
+
+btn.addEventListener('click', btnHandler);
+btn2.addEventListener('click', btnHandler);
 
 
-
-//btn.addEventListener('click', createBtnHandler(3));
-
+/*
 const btnHandler = (e)=>{
   console.group();
   console.log(e);
@@ -27,7 +36,7 @@ btn.addEventListener("click", btnHandler);
 
 window.addEventListener("click", btnHandler);
 document.addEventListener("click", btnHandler);
-document.body.addEventListener("click", btnHandler);
+document.body.addEventListener("click", btnHandler);*/
 
 
 
