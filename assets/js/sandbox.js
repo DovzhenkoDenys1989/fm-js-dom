@@ -15,3 +15,5 @@ function createBtnHandler(clicksAmount = 5) {
 
 btn.addEventListener('click', createBtnHandler(3));
 
+btn.dispatchEvent(new MouseEvent('click'));
+
