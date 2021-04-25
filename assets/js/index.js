@@ -34,6 +34,12 @@ const createButtonHandler = (action = 'next') => {
 prevButton.addEventListener("click", createButtonHandler('prev'));
 nextButton.addEventListener("click", createButtonHandler('next'));
 
+prevButton.addEventListener('click', (e)=> {
+  console.log(e);
+})
+
+/*nextButton.onclick = createButtonHandler("next");*/
+
 
 /*
 prevButton.addEventListener("click", () => {
