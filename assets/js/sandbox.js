@@ -17,10 +17,10 @@ function createBtnHandler(clicksAmount = 5) {
   return btnHandler;
 }
 
-const btnHandler = createBtnHandler(3);
+//const btnHandler = createBtnHandler(3);
 
-btn.addEventListener('click', btnHandler);
-btn2.addEventListener('click', btnHandler);
+/*btn.addEventListener('click', btnHandler);
+btn2.addEventListener('click', btnHandler);*/
 
 
 /*

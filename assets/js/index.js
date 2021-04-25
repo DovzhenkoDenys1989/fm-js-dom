@@ -9,16 +9,25 @@ const imageDB = [
 
 const slider = new Slider(imageDB);
 
-const slideImage = document.querySelector('.slide');
+const [slideImage, slideImage2] = document.querySelectorAll('.slide');
 const [prevButton, nextButton] = document.querySelectorAll('.slider-container > button');
+
+const srcAttr = document.createAttribute('src');
+slideImage.setAttributeNode(srcAttr);
+
+const updateView = (imgLink) => {
+  //slideImage.setAttribute('src', imgLink);
+  srcAttr.value = imgLink;
+}
 
 updateView(slider.currentSlide);
 
-const createButtonHandler = (action = 'next') =>
-  () => {
+const createButtonHandler = (action = 'next') => {
+  return () => {
     const newImage = slider[action]();
     updateView(newImage);
-  };
+  }
+};
 
 
 
@@ -37,6 +46,3 @@ nextButton.addEventListener("click", () => {
   updateView(newImage);
 });*/
 
-function updateView(imgLink) {
-  slideImage.setAttribute('src', imgLink);
-}
