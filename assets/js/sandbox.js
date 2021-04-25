@@ -22,9 +22,7 @@ const [btn1, btn2] = document.querySelectorAll('.changing-button');
 */
 
 const btnEnterHandler = () => {
- const temp = btn1.innerText;
- btn1.innerText = btn2.innerText;
- btn2.innerText = temp;
+  [btn1.innerText, btn2.innerText] = [btn2.innerText, btn1.innerText];
 }
 
 btn1.addEventListener('mouseenter', btnEnterHandler);
