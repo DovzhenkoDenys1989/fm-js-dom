@@ -7,77 +7,69 @@ const cardElements = data.map((place) => createPlaceCard(place));
 cardContainer.append(...cardElements);
 
 function createPlaceCard(place) {
- 
-  const imageWrapper = createImageWrapper(place);
-  const contentWrapper = createContentWrapper(place);
-  
-
-  //article.cardContainer
-  const container = createElement(
-    "article",
-    { classNames: ["cardContainer"] },
-    imageWrapper,
-    contentWrapper
-  );
-
   //li.cardWrapper
-  const card = createElement("li", { classNames: ["cardWrapper"] }, container);
-
-  return card;
+  return createElement(
+    "li",
+    { classNames: ["cardWrapper"] },
+    //article.cardContainer
+    createElement(
+      "article",
+      { classNames: ["cardContainer"] },
+      createImageWrapper(place),
+      createContentWrapper(place)
+    )
+  );
 }
 
-function createImageWrapper({name, profilePicture}){
-   //div.initials
-   const initials = createElement(
-    "div",
-    { classNames: ["initials"] },
-    document.createTextNode(name[0] || "")
-  );
-
+function createCardImage(link) {
   //img.cardImage
   const img = createElement("img", {
     classNames: ["cardImage"],
     handlers: { error: handleImageError, load: handleImageLoad },
   });
 
-  img.src = profilePicture;
+  img.src = link;
   img.hidden = true;
 
+  return img;
+}
+
+function createImageWrapper({ name, profilePicture }) {
   //div.cardImageWrapper
   const imageWrapper = createElement(
     "div",
     { classNames: ["cardImageWrapper"] },
-    initials,
-    img
+    //div.initials
+    createElement(
+      "div",
+      { classNames: ["initials"] },
+      document.createTextNode(name[0] || "")
+    ),
+    createCardImage(profilePicture)
   );
   imageWrapper.style.backgroundColor = stringToColor(name || "");
 
   return imageWrapper;
 }
 
-function createContentWrapper({name, description}) {
-  //h3.cardName
-  const cardName = createElement(
-    "h3",
-    { classNames: ["cardName"] },
-    document.createTextNode(name || "")
-  );
-
-  //p.cardDescription
-  const cardDescription = createElement(
-    "p",
-    { classNames: ["cardDescription"] },
-    document.createTextNode(description || "")
-  );
-
+function createContentWrapper({ name, description }) {
   //div.contentWrapper
-  const contentWrapper = createElement(
+  return createElement(
     "div",
     { classNames: ["contentWrapper"] },
-    cardName,
-    cardDescription
+    //h3.cardName
+    createElement(
+      "h3",
+      { classNames: ["cardName"] },
+      document.createTextNode(name || "")
+    ),
+    //p.cardDescription
+    createElement(
+      "p",
+      { classNames: ["cardDescription"] },
+      document.createTextNode(description || "")
+    )
   );
-  return contentWrapper;
 }
 
 /**
