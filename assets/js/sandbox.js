@@ -24,3 +24,21 @@ function checkUsername(username) {
     throw new Error("Invalid username");
   }
 }
+
+/**
+ * С помощью setInterval написать ф-ю, которая
+ * будет выводить раз 500мс числа от 1 до 20.
+ * Когда счетчик дойдет до 20 отключить интервал (clearInterval).
+ */
+
+function count() {
+  let counter = 0;
+  
+  const id = setInterval(() => {
+    console.log(++counter);
+    if(counter >= 20) {
+      clearInterval(id)
+    }
+  }, 500); 
+}
+count();
